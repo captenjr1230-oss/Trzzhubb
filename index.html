@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TARZZ STORE - Sultan Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Arial', sans-serif; background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); color: #fff; min-height: 100vh; }
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #FF7F00, #8B00FF);
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden; /* Produk Unggulan */
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.2rem;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+  animation: bounce-header 2.5s ease-in-out infinite;
+}
+
+@keyframes bounce-header {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Section */
+section { padding: 50px 20px; max-width: 1000px; margin: auto; }
+h2 { text-align: center; font-weight: 700; font-size: 2rem; margin-bottom: 40px; color: #ff8c00; }
+
+/* Produk */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.product-card {
+  border-radius: 20px;
+  padding: 30px 40px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  width: 400px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 50px rgba(0,255,255,0.5);
+}
+
+.auto-walk-card { color: #00bfff; }
+.save-teleport-card { color: #9400ff; }
+
+.product-label {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 6px 14px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+.auto-walk-card .product-label { background: #00bfff; color: #fff; }
+.save-teleport-card .product-label { background: #9400ff; color: #fff; }
+
+.price {
+  font-weight: 900;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+  transition: all 0.4s ease;
+}
+.price:hover { transform: scale(1.1); }
+
+.product-card a, .product-card button.detail-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(90deg, #25D366, #128c7e);
+  color: #fff;
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s;
+  margin: 5px 0;
+  cursor: pointer;
+}
+.product-card a:hover, .product-card button.detail-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,255,255,0.7);
+  background: linear-gradient(90deg, #128c7e, #25D366);
+}
+
+.premium-card::before {
+  content: "PERMANEN";
+  position: absolute;
+  top: 15px;
+  right: -45px;
+  width: 150px;
+  padding: 6px 0;
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #fff;
+  transform: rotate(45deg);
+  z-index: 10;
+  border-radius: 6px;
+  background: linear-gradient(270deg, #FFD700, #FF4500, #FF69B4, #1E90FF, #00FF7F);
+  background-size: 500% 500%;
+  box-shadow: 0 0 10px #FFD700, 0 0 20px #FF4500, 0 0 30px #FF69B4, 0 0 40px #1E90FF;
+  animation: premium-gradient 4s ease infinite, premium-pulse 1.5s ease-in-out infinite, premium-swing 2s ease-in-out infinite;
+}
+
+@keyframes premium-gradient { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+@keyframes premium-pulse { 0%,100%{transform:rotate(45deg) scale(1);} 50%{transform:rotate(45deg) scale(1.15);} }
+@keyframes premium-swing { 0%,100%{transform:rotate(45deg) translateX(0);} 25%{transform:rotate(47deg) translateX(2px);} 75%{transform:rotate(43deg) translateX(-2px);} }
+
+/* QRIS */
+#qris {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,255,255,0.3);
+  margin: 40px 20px;
+}
+#qris img {
+  width: 300px;
+  height: auto;
+  border-radius: 15px;
+  transition: transform 0.3s;
+}
+#qris img:hover { transform: scale(1.10); }
+
+/* Form Pemesanan */
+#order {
+  padding: 40px 20px;
+  max-width: 500px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,255,255,0.3);
+  text-align: center;
+}
+#roblox-username { width: 80%; padding: 12px 15px; margin: 15px 0; border-radius: 12px; border: 1px solid #ccc; font-size: 1rem; transition: all 0.3s; }
+#roblox-username:focus { border: 2px solid #25D366; box-shadow: 0 0 10px #25D366; outline: none; }
+#send-order {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(90deg, #25D366, #128c7e);
+  color: #fff;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 15px;
+}
+#send-order:hover { box-shadow: 0 0 15px #25D366, 0 0 30px #128c7e; transform: scale(1.05); }
+
+/* Responsive */
+@media(max-width: 700px){
+  .products { flex-direction: column; align-items: center; gap: 20px; }
+}
+
+/* Modal Sultan Edition */
+.modal {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  z-index: 1000;
+}
+.modal.active { bottom: 0; opacity: 1; visibility: visible; }
+
+.modal-content {
+  background: linear-gradient(135deg, #1c1c1c, #0f0c29);
+  color: #fff;
+  border-radius: 20px 20px 0 0;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80%;
+  overflow-y: auto;
+  padding: 30px 25px;
+  box-shadow: 0 8px 30px rgba(0,255,255,0.5);
+  position: relative;
+  animation: slide-up 0.5s ease;
+}
+@keyframes slide-up { 0%{transform: translateY(100%);} 100%{transform: translateY(0);} }
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  color: #ff8c00;
+  text-align: center;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+}
+.modal-content ul { list-style: none; padding-left: 0; }
+.modal-content li { padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.3s;
+}
+.close-modal:hover { color: #ff8c00; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>TARZZ STORE</h1>
+</header>
+
+<section id="products">
+  <h2>Produk Unggulan</h2>
+  <div class="products">
+    <div class="product-card auto-walk-card premium-card">
+      <div class="product-label">AUTO WALK</div>
+      <p class="price auto-walk">Rp 20.000</p>
+      <a href="https://wa.me/6287765230759?text=Halo%20bang%2C%20saya%20mau%20beli%20AUTO%20WALK" target="_blank">Beli via WhatsApp</a>
+      <button class="detail-btn" onclick="showDetails('auto-walk')">DETAIL</button>
+    </div>
+    <div class="product-card save-teleport-card premium-card">
+      <div class="product-label">CREATE AUTO TELEPORT</div>
+      <p class="price save-teleport">Rp 15.000</p>
+      <a href="https://wa.me/6287765230759?text=Halo%20bang%2C%20saya%20mau%20beli%20SAVE%20AUTO%20TELEPORT" target="_blank">Beli via WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section id="qris">
+  <h2>📱 Scan QR untuk pembayaran</h2>
+  <img src="Tarz.jpg" alt="QRIS TARZZ STORE">
+</section>
+
+<section id="order">
+  <h2>👤 Username Roblox</h2>
+  <input type="text" id="roblox-username" placeholder="Masukkan username Anda">
+  <p style="font-size: 0.9rem; color: #fff; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 12px;">
+    ⚠️ <strong>PENTING</strong>, Pastikan huruf besar/kecil sesuai dengan username Roblox anda
+  </p>
+  <button id="send-order">KIRIM PESANAN SEKARANG</button>
+  <p style="font-size: 0.9rem; color: #ccc; margin-top: 10px;">Dan kirim ss bukti hasil pembayaran</p>
+</section>
+
+<section id="join-group" style="padding: 40px 20px; text-align: center; max-width: 500px; margin: 40px auto; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 20px; box-shadow: 0 8px 25px rgba(0,255,255,0.3);">
+  <h2>JOIN SALURAN TRZZHUB</h2>
+  <p style="color: #fff; font-size: 1rem; margin-bottom: 20px;">
+    Bergabung sekarang untuk mendapatkan update terbaru dan diskusi bersama komunitas!
+  </p>
+  <a href="https://whatsapp.com/channel/0029Vb6ISqrFSAt3MD3Goa0z" target="_blank" style="display: inline-block; padding: 14px 28px; background: linear-gradient(90deg, #25D366, #128c7e); color: #fff; border-radius: 18px; font-weight: 700; font-size: 1rem; box-shadow: 0 5px 12px rgba(0,0,0,0.3); text-decoration: none; transition: all 0.3s;">
+    Join Sekarang
+  </a>
+</section>
+
+<!-- Modal Sultan Edition -->
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h3>Detail Produk</h3>
+    <ul id="modal-list"></ul>
+  </div>
+</div>
+
+<script>
+// Animasi muncul produk
+const cards = document.querySelectorAll('.product-card');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if(entry.isIntersecting){
+      setTimeout(() => {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0) scale(1)';
+      }, index * 200);
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.2});
+cards.forEach(card => observer.observe(card));
+
+// Kirim order WA
+document.getElementById('send-order').addEventListener('click', () => {
+  const username = document.getElementById('roblox-username').value.trim();
+  if(!username){
+    alert('Masukkan username Roblox Anda!');
+    return;
+  }
+  const message = `Halo, saya ingin memesan.\nUsername Roblox: ${username}`;
+  const waLink = `https://wa.me/6287765230759?text=${encodeURIComponent(message)}`;
+  window.open(waLink, '_blank');
+});
+
+// Data detail produk terbaru  
+const productDetails = {  
+  'auto-walk': [  
+    "🏃 20K = 30 MOUNT",  
+    // MOUNT  
+    "〣 MT YAHAYUK",  
+    "〣 MT DAUN",  
+    "〣 MT ARUNIKA",  
+    "〣 MT ATIN",  
+    "〣 MT ANEH MODE PRO",  
+    "〣 MT PEDAUNAN",  
+    "〣 MT PENGANGGURAN",  
+    "〣 MT KOTA BUKAN GUNUNG",  
+    "〣 MT MONO",  
+    "〣 MT YNTKTS",  
+    "〣 MT LEMBAYANA",  
+    "〣 MT MALAIKAT",  
+    "〣 MT IMUT",  
+    "〣 MT FUNNY",  
+    "〣 MT KALISTA",  
+    "〣 MT DUCKY",  
+    "〣 MT PRAMBANAN",  
+    "〣 MT RUNIA",  
+    "〣 MT ANTARTIKA HARD",  
+    "〣 MT AGE",  
+    "〣 MT GEMI",  
+    "〣 MT KAWAH TERJUN HARD",  
+    "〣 MT QIAN",  
+    "〣 MT TORAJA",  
+    "〣 EKSPEDISI KOTA",  
+    "〣 MT WASABI",  
+    "〣 MT FREESTYLE",  
+    "〣 MT RAGON",  
+    "〣 MT DAY ONE",  
+    "〣 MT BAGEN DAH",  
+  
+    // SCRIPT  
+    "⚔️ SCRIPT",  
+    "〣 FLY GUI V3",  
+    "〣 FLING GUI",  
+    "〣 INFITE YIELD",  
+    "〣 FPS BOOTS",  
+    "〣 FREEZE PART",  
+    "〣 TITLE ADMIN",  
+    "〣 ANIMASI SPARKLES",  
+    "〣 INF JUMP",  
+    "〣 HIDE PLAYERS",  
+  
+    // ANIMASI  
+    "💨 ANIMASI",  
+    "〣 ANIMASI RUN",  
+    "〣 ANIMASI WALK",  
+    "〣 ANIMASI JUMP",  
+    "〣 ANIMASI IDLE",  
+  
+    // UNIVERSAL SCRIPT  
+    "🌐 UNIVERSAL SCRIPT",  
+    "〣 NO CLIP",  
+    "〣 TAP TELEPORT",  
+    "〣 REJOIN GAME",  
+    "〣 SERVER HOP",  
+    "〣 ESP",  
+    "〣 DASH SCRIPT",  
+    "〣 AIM BOT",  
+    "〣 TELEPORT TO USER",  
+    "〣 TELEPORT TO CORDINATE"  
+  ]  
+};  
+  
+// Fungsi tampilkan detail di modal  
+function showDetails(product) {  
+  const modal = document.getElementById('product-modal');  
+  const list = document.getElementById('modal-list');  
+  list.innerHTML = "";  
+  if(productDetails[product]){  
+    productDetails[product].forEach(item => {  
+      if(item){  
+        const li = document.createElement('li');  
+        li.textContent = item;  
+        list.appendChild(li);  
+      }  
+    });  
+    modal.classList.add('active');  
+  } else {  
+    alert("Detail produk belum tersedia.");  
+  }  
+}  
+  
+// Tutup modal  
+document.querySelector('.close-modal').addEventListener('click', () => {  
+  document.getElementById('product-modal').classList.remove('active');  
+});  
+document.getElementById('product-modal').addEventListener('click', (e) => {  
+  if(e.target === e.currentTarget) e.currentTarget.classList.remove('active');  
+});  
+</script>  </body>  
+</html>  
